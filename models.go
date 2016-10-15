@@ -1,5 +1,10 @@
 package sense
 
+import (
+	"strconv"
+	"time"
+)
+
 type senseTime struct {
 	time.Time
 }
