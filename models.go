@@ -14,7 +14,7 @@ func (t *senseTime) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	tm := time.Unix(i, 0)
+	tm := time.Unix(i/1000, 0)
 	t.Time = tm
 	return nil
 }
@@ -23,15 +23,15 @@ type TimelineEvent struct {
 	timezoneOffset int
 	validActions   []string
 	Timestamp      senseTime
-	EventType      string
+	Type           string `json:"event_type"`
 	Message        string
 	SleepState     string
-	Duration       int
+	durationMillis int
 	SleepDepth     int
 }
 
 type Timeline struct {
 	Events         []TimelineEvent
 	Message        string
-	ScoreCondition string
+	ScoreCondition string `json:"score_condition"`
 }
